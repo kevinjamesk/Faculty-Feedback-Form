@@ -1,0 +1,24 @@
+PHP INSTALLATION GUIDE ON LINIX :-
+1) HOW TO INSTALL PHP7.0
+  $ sudo apt-get install php libapache2-mod-php php-mcrypt php-mysql
+
+  // Show all package related to php
+  $ dpkg --get-selections | grep php
+  $ which php
+
+2) TRY PUT PHP ON CLI
+  // Say hello
+  $ php -r 'echo "Hello, world!\n";'
+  Hello, world!
+
+  // Run phpinfo()
+  $ php -r 'phpinfo();' // This shows the server information
+
+3)RUNNING PHP ON APACHE WEB SERVER
+  Write a PHP script called "test.php" (place under Apache's base at "var/www/html") to run phpinfo() under Apache, as below.
+
+  <?php 
+  phpinfo();
+  ?>
+
+  Run the script via http://localhost/test.php.

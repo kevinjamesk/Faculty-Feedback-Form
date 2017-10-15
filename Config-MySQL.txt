@@ -1,0 +1,67 @@
+MySQL INSTALLATION GUIDE ON LINUX:-
+1) INSTALLATION VIA CLI
+  $ sudo apt-get update
+  $ sudo apt-get install mysql-server
+
+  $ dpkg --get-selections | grep mysql // Show packages related to MySQL
+
+  // Check the location of "mysqld" (MySQL server deamon)
+  $ which mysqld
+  /usr/sbin/mysqld
+
+2) CHECKING THE MYSQL DAEMON
+  MySQL reads the startup options from the files shown below, in the specified order (top files are read first, files read later take precedence) (Reference: http://dev.mysql.com/doc/refman/5.7/en/option-files.html)
+
+  /etc/my.cnf
+  /etc/mysql/my.cnf
+  SYSCONFDIR/my.cnf
+  $MYSQL_HOME/my.cnf (server only)
+  The file specified in --defaults-extra-file startup option, if any
+  ~/.my.cnf
+  ~/.mylogin.cnf (client only)
+
+  The installation default /etc/mysql/my.cnf includes directories /etc/mysql/conf.d/ and /etc/mysql/mysql.conf.d/. The /etc/mysql/conf.d/mysql.cnf is empty. Hence, the main configuaration file is /etc/mysql/mysql.conf.d/mysqld.cnf.
+
+  Browse through /etc/mysql/mysql.conf.d/mysqld.cnf:
+
+  [mysqld]
+  user            = mysql
+  port            = 3306
+  basedir         = /usr
+  datadir         = /var/lib/mysql
+  ......
+  log_error = /var/log/mysql/error.log
+  ......
+
+********************************************************************************************************************
+ THIS IS HOW I GOT ON MY PC
+ root@nikhil-VirtualBox:/etc/mysql/mysql.conf.d# more mysqld.cnf
+
+  [mysqld]
+  #
+  # * Basic Settings
+  #
+  user		= mysql
+  pid-file	= /var/run/mysqld/mysqld.pid
+  socket		= /var/run/mysqld/mysqld.sock
+  port		= 3306
+  basedir		= /usr
+  datadir		= /var/lib/mysql
+  tmpdir		= /tmp
+  lc-messages-dir	= /usr/share/mysql
+  skip-external-locking
+  #
+  # Instead of skip-networking the default is now to listen only on
+  # localhost which is more compatible and is not less secure.
+  bind-address		= 127.0.0.1
+  #
+  ...
+
+
+4)START/SHUTDOWN MYSQLD
+  $ sudo service mysql restart
+  $ ps aux | grep mysqld // TO SHOW THE PROCESS OF THE MYSQL DAEMON
+
+5)TO START MYSQL CLIENT
+  $ mysql -u root -p
+  

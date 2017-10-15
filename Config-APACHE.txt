@@ -1,0 +1,36 @@
+For the Feedback-Form to work we have to use LAMP(Linux-Apache-MySQL-PHP) protocol
+How to get started with LAMP :-
+1) INSTALLING APACHE
+  $ sudo apt-get update
+  $ sudo apt-get install apache2
+
+  To verfy Installation
+    $ dpkg --get-selections | grep apache
+    $ which apache2 // To find where apache2 is located
+    $ man apache2 // to view the Manual
+
+2) CONFIGURING APACHE2.4
+  Apache keeps its configuration files in /etc/apache2 which includes :-
+  * apache2.conf - It puts together the pices together by including all remaining configuration files when starting up the web server.
+  * port.conf - It is always included from the main config file .It is used to determne the listening ports for incoming connections.
+  * sites-available/*.conf and sites-enabled/*.conf: for managing application web sites. All *.conf in sites-enabled are included in apache2.conf.
+    To create a new site, you should create a configuration in sites-available; and use helper utility a2ensite to make a symlink to the sites-enabled (instead of duplicating the file).
+    Similarly, use helper utility a2dissite to remove a site from sites-enabled (which removes the symlink).
+    The "000-default.conf" provided (called "default.conf" in Apache 2.2), which is enabled by default, defines a virtual host:
+
+    Listening at port 80 (enabled in "port.conf").
+    DocumentRoot at "/var/www/html" (or "/var/www" in Apache 2.2)
+  * "/var/www/html" - This is where the Web Server will be serving most of its pages from.
+
+3) STARTING AND STOPPING THE SERVICE
+  $ sudo service apache2 stop
+  $ sudo service apache2 start
+
+4) LIKE TASK MANAGER IN WINDOWS , ps IS USED TO SHOW THE PROCESSES
+  $ ps aux | grep apache
+
+5)  ACCESSING THE APACHE SERVER
+  Start a web browser (such as Firefox) and issue URL http://localhost.
+  Take note that the default enabled configuration "000-default.conf" defines a virtual host listening at port 80 with DocumentRoot at "/var/www/html".
+
+LOOK INTO Config-PHP.txt FOR CONFIGURING PHP ON LINUX
